@@ -5,8 +5,6 @@ char VersionNumber[6] = "V2.23";
 #define MAX_SSID_LEN      32                                      // Max SSID octets
 #define MAX_CONNECT_TIME  30000                                   // Wait this much until device gets IP
 
-//char WIFI_SSID[MAX_SSID_LEN]      = "Castellcorunas";   H3140-63774554          // Specify WIFI_SSID if using a encrypted 2.4GHz only! WiFI network
-//char WIFI_PASSWORD[MAX_SSID_LEN]  = "BEEFBABE99";       fRy3XsPTyf          // Specify WIFI_SSID_PASSWORD if using a encrypted WiFI network
 char WIFI_SSID[MAX_SSID_LEN]      = "YOUR_SSID";             // Specify WIFI_SSID if using a encrypted 2.4GHz only! WiFI network
 char WIFI_PASSWORD[MAX_SSID_LEN]  = "Your_PWD";                 // Specify WIFI_SSID_PASSWORD if using a encrypted WiFI network
 
