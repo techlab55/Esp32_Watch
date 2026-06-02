@@ -1,39 +1,4 @@
-// Taken from https://www.youtube.com/watch?v=XM_6qEAdFnM&t=30s (Volos Projects) and changed the RTC part into NTP - WiFi.
-// The Look for Open WiFi part I borrowed from: https://www.instructables.com/Connect-an-ESP8266-to-Any-Open-WiFi-Network-Automa/
-// Also sturctured the code a bit and added comments.
-// Good luck, feel free to further use and change this code :-), thanks Volos!
-// I will not be responseable in any way when using or modifying this code.
-// Leo Kroonenburg (castellcorunas)
-// To facilitate an easy download into the ESP32 I put a 10uF electrolitic capacitor between EN and GND. (GND = Minus)
-                                                                  
-                                                                  // V1.01 First working version taken from Volos Projects
-                                                                  // V1.02 attempt to put Day on clockface
-                                                                  // V1.03 test with changing SDA & CLK pins
-                                                                  // V1.04 moved time provider to global
-                                                                  // V2.00 changed from using RTC to NTP though WiFi
-                                                                  // V2.01 cleaned up code
-                                                                  // V2.02 First 'made for public' version
-                                                                  // V2.03 more code cleaning, comments update, etc.
-                                                                  // V2.04 Added the WiFI re-connect part in case of lost connection, also better alignment of the '0' second marker by showing '00'
-                                                                  // V2.05 Code cleaning, more and better comments added
-                                                                  // V2.06 simplifying code, beginning with dotted circle
-                                                                  // V2.07 simplifying Second number placing, removed unused variables 'VALUE', 'counter' 'lastAngle' and 'lastValue'
-                                                                  // V2.08 cleaner, somewhat smoother and simplified version
-                                                                  // V2.09 minor updates, comments etc.
-                                                                  // V2.10 added Watch Dog Timer to recover from hang?
-                                                                  // V2.11 Added eeprom to remember the boottime and to detect a WDT reboot? (Not done this way)
-                                                                  // V2.12 Improved determination of reset cause
-                                                                  // V2.13 cleaned up code, included reboot reason to show VersionNumber in color on WatchFace
-                                                                  // V2.14 added automatic free network selection
-                                                                  // V2.15 showing networks on TFT before starting clock
-                                                                  // V2.16 minor changes, plus countdown on TFT before clock start
-                                                                  // V2.17 cleaned up code cleaned up Serial output, also: if you specify a WiFiSSD (and password) it will not look for a free WiFI
-                                                                  // V2.18 working version, if a WIFI_SSID and WIFI_PASSWORD are specified these are used, if not, it will look for an open WIFI network
-                                                                  // V2.19 first attempt to connect to a specified network including password, but, when connection fails start looking for a free WiFi network
-                                                                  // V2.20 cleaned up version
-                                                                  // V2.21 Same as V2.20, but with my Network credentials. Not for distribution!!
-                                                                  
-                                                                  
+        
 char VersionNumber[6] = "V2.23";
 
 #define WIFI_DELAY        500
@@ -42,8 +7,8 @@ char VersionNumber[6] = "V2.23";
 
 //char WIFI_SSID[MAX_SSID_LEN]      = "Castellcorunas";   H3140-63774554          // Specify WIFI_SSID if using a encrypted 2.4GHz only! WiFI network
 //char WIFI_PASSWORD[MAX_SSID_LEN]  = "BEEFBABE99";       fRy3XsPTyf          // Specify WIFI_SSID_PASSWORD if using a encrypted WiFI network
-char WIFI_SSID[MAX_SSID_LEN]      = "dd-wrt";             // Specify WIFI_SSID if using a encrypted 2.4GHz only! WiFI network
-char WIFI_PASSWORD[MAX_SSID_LEN]  = "plinio5512";                 // Specify WIFI_SSID_PASSWORD if using a encrypted WiFI network
+char WIFI_SSID[MAX_SSID_LEN]      = "YOUR_SSID";             // Specify WIFI_SSID if using a encrypted 2.4GHz only! WiFI network
+char WIFI_PASSWORD[MAX_SSID_LEN]  = "Your_PWD";                 // Specify WIFI_SSID_PASSWORD if using a encrypted WiFI network
 
 char WIFI_SSID_FOUND[MAX_SSID_LEN]= "";                           // SSID to be used to connect if NOT defined or able to connect to an encrypted network, it will search for an open network without a password.
 
